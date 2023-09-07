@@ -40,11 +40,28 @@ public class Test
             BufferedWriter bw=new BufferedWriter(new FileWriter("objects.json"));
             bw.write(fln);
             bw.close();
+
         }
         catch (Exception E)
         {
 
         }
+        System.out.println("Updating the file, pls wait");
+        try{
+
+            Process process=Runtime.getRuntime().exec("git add .");
+            process.waitFor();
+            Process process1=Runtime.getRuntime().exec("git commit -m \"New commit\"");
+            process1.waitFor();
+            Process process2=Runtime.getRuntime().exec("git push origin main");
+            process2.waitFor();
+
+        }
+        catch (Exception E)
+        {
+            System.out.println("Internet Issue");
+        }
+        System.out.println("Upload Complete!");
     }
 
 }
