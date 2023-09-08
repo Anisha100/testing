@@ -68,7 +68,7 @@ public class Test
         System.out.println("Verifying Upload....");
         while(true)
         {
-            try{String url="";
+            try{String url="https://Anisha100.github.io/testing/objects.json";
                 URL urlget=new URL(url);
                 String read="";
                 HttpURLConnection connection = (HttpURLConnection) urlget.openConnection();  
