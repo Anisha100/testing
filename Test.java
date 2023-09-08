@@ -3,6 +3,8 @@ import org.json.*;
 import java.util.*;
 import java.security.*;
 import java.io.*;
+import java.net.*;
+
 public class Test
 {
     public static void main(String[] args) throws Exception 
@@ -61,7 +63,34 @@ public class Test
         {
             System.out.println("Internet Issue");
         }
+
         System.out.println("Upload Complete!");
+        System.out.println("Verifying Upload....");
+        while(true)
+        {
+            try{String url="";
+                URL urlget=new URL(url);
+                String read="";
+                HttpURLConnection connection = (HttpURLConnection) urlget.openConnection();  
+                connection.setRequestMethod("GET"); 
+                InputStreamReader isrObj = new InputStreamReader(connection.getInputStream());  
+                BufferedReader bf = new BufferedReader(isrObj);
+                StringBuffer curr=new StringBuffer();
+                while ((read = bf .readLine()) != null)  
+                {  
+                    curr.append(read);  
+                }   
+                // closing the BufferedReader  
+                bf.close();
+                connection.disconnect();
+                if(curr.toString().equals(fln))
+                    break;
+            }
+            catch (Exception e){
+                System.out.println("Upload Failed :-(");
+            }
+        }
+        System.out.println("Upload Successful");
     }
 
 }
