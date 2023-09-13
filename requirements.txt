@@ -1,0 +1,7 @@
+pickle-mixin
+requests
+pycryptodome
+fido2
+pyscard
+pyserial
+
