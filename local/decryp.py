@@ -3,11 +3,14 @@ import data
 import base64
 def dec(ciphertext):
 	data.call()
-	key=base64.b64decode((data.key).encode()) 
-	#print(key)
-	cipher = AES.new(key, AES.MODE_OFB,b'!\xef\xc0v_2\rfC\xef\xb7\xa0\x80R\xfdV')
-	plaintext = cipher.decrypt(ciphertext)
-	return plaintext.decode()
+	if data.ecr:
+		key=base64.b64decode((data.key).encode()) 
+		#print(key)
+		cipher = AES.new(key, AES.MODE_OFB,b'!\xef\xc0v_2\rfC\xef\xb7\xa0\x80R\xfdV')
+		plaintext = cipher.decrypt(ciphertext)
+		return plaintext.decode()
+	else:
+		return ciphertext.decode()
 def cipher_gen(payl):
 	try:
 		payl_len=payl[8]
